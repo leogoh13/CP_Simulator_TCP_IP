@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+
+<config>
+  <tcpip>
+    <address>192.168.1.18</address>
+    <port>6001</port>
+  </tcpip>
+
+  <carpark>
+    <terminalType></terminalType>
+  </carpark>
+</config>

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Text;
-using System.Xml;
 
-namespace CP_Simulator_TCP_IP
+namespace Carpark_TCP
 {
     partial class Program
     {
@@ -18,7 +16,7 @@ namespace CP_Simulator_TCP_IP
             Carpark cp = new Carpark();
             TCPIP tcpip = new TCPIP(address, port);
 
-            Console.WriteLine("Running at IP:" + address + " Port: " + port.ToString());
+            Console.WriteLine("Running at IP:" + address + " Port: " + port.ToString() + "\n");
 
             while (true)
             {
@@ -31,7 +29,7 @@ namespace CP_Simulator_TCP_IP
                     sendData_byte = cp.GetNormalFare();
 
                 if (recvData.Contains(Commands.openGateCommand2_0))
-                    sendData_byte = cp.OpenGate2_0(recvData);
+                    sendData_byte = cp.OpenGate2_0();
 
                 if (sendData_byte != null)
                     tcpip.SendData(sendData_byte);

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml;
 
-namespace CP_Simulator_TCP_IP
+namespace Carpark_TCP
 {
     public class XML
     {

@@ -3,8 +3,7 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 
-
-namespace CP_Simulator_TCP_IP
+namespace Carpark_TCP
 {
     partial class Program
     {

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Text;
 
-
-namespace CP_Simulator_TCP_IP
+namespace Carpark_TCP
 {
     static class Utils
     {
@@ -26,44 +25,6 @@ namespace CP_Simulator_TCP_IP
             }
             return numberBCD;
         }
-        public static string Hex2Ascii(string hexStr)
-        {
-            try
-            {
-                string ascii = string.Empty;
-
-                for (int i = 0; i < hexStr.Length; i += 2)
-                {
-                    string hs = string.Empty;
-
-                    hs = hexStr.Substring(i, 2);
-                    uint decval = System.Convert.ToUInt32(hs, 16);
-                    char character = System.Convert.ToChar(decval);
-                    ascii += character;
-
-                }
-
-                return ascii;
-            }
-            catch (Exception ex) { Console.WriteLine(ex.Message); }
-
-            return string.Empty;
-        }
-        public static string Ascii2Hex(byte[] asciiStr)
-        {
-            try
-            {
-                string temp = BitConverter.ToString(asciiStr);
-                temp.Replace('-', '\x00');
-                return BitConverter.ToString(asciiStr);
-            }
-            catch (Exception ex) 
-            { 
-                Console.WriteLine(ex.Message); 
-            }
-
-            return string.Empty;
-        }
         public static byte[] Str2Byte(string value)
         {
             return Encoding.ASCII.GetBytes(value);
@@ -71,6 +32,10 @@ namespace CP_Simulator_TCP_IP
         public static string Byte2StrAscii(byte[] value)
         {
             return Encoding.ASCII.GetString(value);
+        }
+        public static byte[] StrAscii2Byte(string value)
+        {
+            return Encoding.ASCII.GetBytes(value);
         }
         public static string GetSystemTime()
         {
@@ -86,16 +51,23 @@ namespace CP_Simulator_TCP_IP
             }
             return bcd;
         }
-        public static string BCD2Str(byte[] bcd)
-        {
-            return Encoding.ASCII.GetString(bcd);
-        }
         public static string Byte2StrHex(byte[] value)
         {
             string temp = BitConverter.ToString(value);
             temp = temp.Replace("-", string.Empty);
             int lenOfEOF = temp.LastIndexOf("0D") + 2;
             return temp.Substring(0, lenOfEOF);
+        }
+
+        public static int GetRandNum(int max)
+        {
+            Random rand = new Random();
+            return rand.Next(0, max - 1);
+        }
+        public static int GetRandNum(int min, int max)
+        {
+            Random rand = new Random();
+            return rand.Next(min, max - 1);
         }
     }
 }
